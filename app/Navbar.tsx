@@ -6,6 +6,7 @@ import Link from "next/link";
 import { PiBugDroidFill } from "react-icons/pi";
 import { usePathname } from "next/navigation";
 import classnames from "classnames";
+import { Skeleton } from "@/app/components";
 import {
   Avatar,
   Box,
@@ -63,7 +64,7 @@ const Navlinks = () => {
 const AuthStatus = () => {
   const { data: session, status } = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width="3rem" />;
 
   if (status === "unauthenticated")
     return (
