@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Callout, CalloutText, TextField } from "@radix-ui/themes";
+import { Button, Callout, TextField } from "@radix-ui/themes";
 
 import "easymde/dist/easymde.min.css";
 import SimpleMDE from "react-simplemde-editor";
@@ -9,7 +9,7 @@ import axios from "axios";
 
 import ErrorMessage from "@/app/components/ErrorMessage";
 import LoadingSpinner from "@/app/components/LoadingSpinner";
-import { issueSchema } from "@/app/utils/validationSchemas";
+import { issueSchema } from "@/app/utils/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Issue } from "@prisma/client";
 import { useRouter } from "next/navigation";
@@ -49,17 +49,15 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
     <div className="max-w-xl">
       {error && (
         <Callout.Root color="red" className="mb-3">
-          <CalloutText>{error}</CalloutText>
+          <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
       <form onSubmit={onSubmit} className="space-y-3">
-        <TextField.Root>
-          <TextField.Input
-            defaultValue={issue?.title}
-            placeholder="Title"
-            {...register("title")}
-          />
-        </TextField.Root>
+        <TextField.Root
+          defaultValue={issue?.title}
+          placeholder="Title"
+          {...register("title")}
+        />
 
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
