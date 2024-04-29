@@ -83,6 +83,7 @@ const AuthStatus = () => {
             size="2"
             radius="full"
             className="cursor-pointer"
+            referrerPolicy="no-referrer" //if image not fetching or forbidden when loading
           />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
