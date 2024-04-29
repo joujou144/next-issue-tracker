@@ -23,7 +23,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
 
   if (error) return null;
 
-  const HandleAssigneeChange = (userId: string) => {
+  const handleAssigneeChange = (userId: string) => {
     axios
       .patch(`/api/issues/${issue.id}`, {
         assignedToUserId: userId === "Unassigned" ? null : userId,
@@ -40,7 +40,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
     <>
       <Select.Root
         defaultValue={issue.assignedToUserId || "Unassigned"}
-        onValueChange={HandleAssigneeChange}
+        onValueChange={handleAssigneeChange}
       >
         <Select.Trigger placeholder="Assign" />
         <Select.Content>
