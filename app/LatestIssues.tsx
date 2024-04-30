@@ -17,20 +17,20 @@ const LatestIssues = async () => {
       </Heading>
       <Table.Root>
         <Table.Body>
-          {issues.map((issue) => (
-            <Table.Row key={issue.id}>
+          {issues.map(({ id, title, status, assignedToUser }) => (
+            <Table.Row key={id}>
               <Table.Cell>
                 <Flex justify="between" align="center">
                   <Flex align="start" gap="2" direction="column">
-                    <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
-                    <IssueStatusBadge status={issue.status} />
+                    <Link href={`/issues/${id}`}>{title}</Link>
+                    <IssueStatusBadge status={status} />
                   </Flex>
-                  {issue.assignedToUser && (
+                  {assignedToUser && (
                     <Avatar
                       size="2"
                       fallback="?"
                       radius="full"
-                      src={issue.assignedToUser.image!}
+                      src={assignedToUser.image!}
                       referrerPolicy="no-referrer"
                     />
                   )}
