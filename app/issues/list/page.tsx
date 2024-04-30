@@ -5,12 +5,12 @@ import IssueToolbar from "../_components/IssueToolbar";
 import { Link, IssueStatusBadge } from "@/app/components";
 import NextLink from "next/link";
 import { Issue, Status } from "@prisma/client";
-import { ArrowUpIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import { ChevronUpIcon } from "@radix-ui/react-icons";
 
 const IssuesPage = async ({
   searchParams,
 }: {
-  searchParams: { status: Status; sortBy: keyof Issue };
+  searchParams: { status: Status; orderBy: keyof Issue };
 }) => {
   const headers: {
     label: string;
@@ -26,8 +26,15 @@ const IssuesPage = async ({
   const status = statuses.includes(searchParams.status)
     ? searchParams.status
     : undefined;
+
+  const orderBy = headers
+    .map((header) => header.value)
+    .includes(searchParams.orderBy)
+    ? { [searchParams.orderBy]: "asc" }
+    : undefined;
   const issues = await prisma.issue.findMany({
     where: { status },
+    orderBy,
   });
 
   return (
@@ -38,9 +45,9 @@ const IssuesPage = async ({
           <Table.Row>
             {headers.map(({ label, value, className }) => (
               <Table.ColumnHeaderCell key={value} className={className}>
-                <NextLink href={{ query: { ...searchParams, sortBy: value } }}>
+                <NextLink href={{ query: { ...searchParams, orderBy: value } }}>
                   {label}
-                  {value === searchParams.sortBy && (
+                  {value === searchParams.orderBy && (
                     <ChevronUpIcon className="inline ml-1" />
                   )}
                 </NextLink>
