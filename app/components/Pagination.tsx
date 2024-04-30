@@ -19,9 +19,15 @@ type Props = {
   totalItems: number;
   pageSize: number;
   currentPage: number;
+  className?: string;
 };
 
-const Pagination = ({ totalItems, pageSize, currentPage }: Props) => {
+const Pagination = ({
+  totalItems,
+  pageSize,
+  currentPage,
+  className,
+}: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -35,10 +41,7 @@ const Pagination = ({ totalItems, pageSize, currentPage }: Props) => {
   };
 
   return (
-    <Flex align="center" gap="3">
-      <Text size="2">
-        Page {currentPage} of {pageCount}
-      </Text>
+    <Flex align="center" gap="3" className={className}>
       <Button
         color="gray"
         variant="soft"
@@ -57,6 +60,9 @@ const Pagination = ({ totalItems, pageSize, currentPage }: Props) => {
       >
         <ChevronLeftIcon />
       </Button>
+      <Text size="2">
+        Page {currentPage} of {pageCount}
+      </Text>
       <Button
         color="gray"
         variant="soft"
