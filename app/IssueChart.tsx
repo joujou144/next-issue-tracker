@@ -1,8 +1,7 @@
 "use client";
 
 import { Card } from "@radix-ui/themes";
-import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar } from "recharts";
-import React from "react";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 type Props = {
   open: number;
@@ -25,7 +24,7 @@ const IssueChart = ({ open, inProgress, closed }: Props) => {
           <Bar
             dataKey="value"
             barSize={60}
-            style={{ fill: "var(--purple-9)" }}
+            style={{ fill: "var(--purple-8)" }}
           />
         </BarChart>
       </ResponsiveContainer>

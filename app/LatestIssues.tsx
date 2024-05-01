@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { Avatar, Button, Card, Flex, Heading, Table } from "@radix-ui/themes";
+import { Avatar, Card, Flex, Heading, Table } from "@radix-ui/themes";
 import Link from "next/link";
 import { IssueStatusBadge } from "./components";
 
