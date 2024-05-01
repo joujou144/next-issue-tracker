@@ -1,3 +1,7 @@
+## Issue Tracker built with NextJS and Typescript
+
+This project is designed to facilitate efficient project management for teams. Built with scalability and production-grade standards, this application allows users to create, edit, and track issues. While the project is fully functional and ready for production, deployment to Vercel is currently on hold due to the unavailability of a free database platform supporting MySQL with Prisma integration. I am currently seeking solutions to overcome this hurdle. In the meantime, feel free to explore the project's features and functionalities locally.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
